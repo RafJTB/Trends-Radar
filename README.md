@@ -23,6 +23,11 @@ Puis ouvre http://localhost:5173.
 | `npm run data` | Régénère les données fictives (graine fixe, résultat identique) |
 | `npm run countries` | Régénère les contours des pays depuis Natural Earth |
 
+## En ligne
+
+Le site est publié sur GitHub Pages à chaque mise à jour de `main` : https://rafjtb.github.io/Trends-Radar/
+(workflow `.github/workflows/deploy.yml` : tests unitaires, build, déploiement).
+
 ## Stack
 
 React 19, TypeScript, Vite 8, **MapLibre GL JS 6** (projection `globe`), icônes Lucide, police Inter auto-hébergée.
