@@ -87,7 +87,6 @@ export function NeedList({ data, state, ranked, countryName, countryHasData, cou
                     className="need-row"
                     aria-current={state.needId === s.need.id}
                     onClick={() => onNeed(s.need.id)}
-                    aria-label={`${i + 1}. ${s.need.title}. Score ${s.score.total} sur 100. ${fmtInt(s.current)} demandes, ${fmtEvolution(s.evolution)}.`}
                   >
                     <span className="need-rank num">{i + 1}</span>
                     <CategoryIcon id={s.need.category} />
@@ -97,7 +96,7 @@ export function NeedList({ data, state, ranked, countryName, countryHasData, cou
                         {fmtInt(s.current)} demandes · <span className={`evo ${evoTone(s.evolution)}`}>{fmtEvolution(s.evolution)}</span>
                       </span>
                     </span>
-                    <span className="score-pill num" title="Score d’opportunité sur 100">{s.score.total}</span>
+                    <span className="score-pill num" title="Score d’opportunité sur 100"><span className="sr-only">Score </span>{s.score.total}<span className="sr-only"> sur 100</span></span>
                   </button>
                 </li>
               ))}

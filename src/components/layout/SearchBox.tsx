@@ -27,10 +27,14 @@ export function SearchBox({ needs, countries, onNeed, onCountry }: Props) {
   const options = useMemo<Option[]>(() => {
     const t = norm(q.trim());
     if (!t) return [];
+    // Pertinence : titre, puis mots-clés, puis description
+    const rank = (x: Need) => (norm(x.title).includes(t) ? 0 : norm(x.keywords.join(' ')).includes(t) ? 1 : norm(x.summary).includes(t) ? 2 : -1);
     const n = needs
-      .filter((x) => norm(`${x.title} ${x.summary} ${x.keywords.join(' ')}`).includes(t))
+      .map((x) => ({ x, r: rank(x) }))
+      .filter((o) => o.r >= 0)
+      .sort((a, b) => a.r - b.r)
       .slice(0, 6)
-      .map((x) => ({ kind: 'need' as const, id: x.id, label: x.title, category: x.category }));
+      .map(({ x }) => ({ kind: 'need' as const, id: x.id, label: x.title, category: x.category }));
     const c = countries
       .filter((x) => norm(x.name).includes(t))
       .sort((a, b) => Number(b.hasData) - Number(a.hasData) || Number(!norm(a.name).startsWith(t)) - Number(!norm(b.name).startsWith(t)))

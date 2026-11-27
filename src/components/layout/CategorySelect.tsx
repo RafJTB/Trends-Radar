@@ -38,11 +38,10 @@ export function CategorySelect({ value, onChange }: { value: Value; onChange: (v
         className="select-btn"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={`Catégorie : ${current ? current.label : 'toutes'}`}
         onClick={() => setOpen((o) => !o)}
       >
         {current ? <span className="cat-dot" style={{ background: current.color }} /> : <LayoutGrid size={15} color="#7088a8" aria-hidden="true" />}
-        <span>{current ? current.label : 'Toutes les catégories'}</span>
+        <span><span className="sr-only">Catégorie : </span>{current ? current.label : 'Toutes les catégories'}</span>
         <ChevronDown className="chev" size={15} aria-hidden="true" />
       </button>
       {open && (

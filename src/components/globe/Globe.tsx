@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { Map as MapLibreMap, type GeoJSONSource, type StyleSpecification } from 'maplibre-gl';
+import { Map as MapLibreMap, setWorkerUrl, type GeoJSONSource, type StyleSpecification } from 'maplibre-gl';
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url';
 type MLMap = MapLibreMap;
+
+// Le worker de MapLibre est un fichier autonome : on le livre tel quel pour qu'il soit présent dans la build.
+setWorkerUrl(workerUrl);
 import 'maplibre-gl/dist/maplibre-gl.css';
 import type { CountriesGeo } from '../../data/countries';
 import type { Iso3 } from '../../data/types';

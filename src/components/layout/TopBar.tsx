@@ -7,7 +7,7 @@ export function TopBar({ children }: { children: ReactNode }) {
       <div className="brand">
         <RadarLogo />
         <div>
-          <div className="brand-name">Trend Radar</div>
+          <h1 className="brand-name">Trend Radar</h1>
           <div className="brand-sub">Les besoins les plus demandés, pays par pays</div>
         </div>
       </div>
